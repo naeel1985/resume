@@ -1,0 +1,44 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+# cPanel symlinks node_modules into the Node virtualenv; it is installed on the
+# server by `npm install`, never committed.
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+# Built on the server by `npm run build` after `npm install`.
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+/.playwright-mcp
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files — ALL of them. Credentials live in cPanel's environment-variable UI.
+.env
+.env.*
+!.env.example
+
+# chat transcripts and visitor quota state, written at runtime (contains PII)
+/.sessions/
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

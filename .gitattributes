@@ -1,0 +1,13 @@
+# Development is on Windows, the server is Linux. Normalise to LF in the repo
+# so a `git pull` on cPanel never lands CRLF in files Node or the shell reads.
+* text=auto eol=lf
+
+# Binary assets must never be touched.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.pdf binary
