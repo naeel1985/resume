@@ -55,7 +55,7 @@ export function Nav() {
       >
         <a
           href="#top"
-          className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-mist-100 transition-colors hover:text-copper-400"
+          className="font-display text-base font-bold tracking-[-0.01em] text-mist-100 transition-colors hover:text-copper-400"
         >
           {profile.name}
         </a>

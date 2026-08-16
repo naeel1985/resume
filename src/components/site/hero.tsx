@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowDown, Download, Mail, MapPin, MessageSquare, Phone } from "lucide-react";
+import { Download, Mail, MapPin, MessageSquare, Phone } from "lucide-react";
 
 import {
   OpenChatButton,
@@ -16,7 +16,7 @@ const contactItems = [
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+    <section id="top" className="relative overflow-hidden pt-28 pb-10 sm:pt-32 sm:pb-14">
       {/* Copper wash bleeding in from the top-right, kept behind everything. */}
       <div
         aria-hidden
@@ -30,22 +30,22 @@ export function Hero() {
               Available for consulting &amp; permanent roles
             </p>
 
-            <h1 className="rise mt-6 text-[clamp(2.5rem,7vw,4.75rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-white [animation-delay:80ms]">
+            <h1 className="rise mt-5 font-display text-[clamp(3rem,8.5vw,6rem)] font-bold leading-[0.92] tracking-[-0.035em] text-white [animation-delay:80ms]">
               {profile.name}
             </h1>
 
-            <div className="rise mt-6 flex items-center gap-4 [animation-delay:140ms]">
+            <div className="rise mt-5 flex items-center gap-4 [animation-delay:140ms]">
               <span className="h-px w-10 shrink-0 bg-copper-500" />
-              <p className="font-mono text-sm uppercase tracking-[0.14em] text-copper-400">
+              <p className="font-display text-[clamp(1rem,2vw,1.375rem)] font-medium tracking-[-0.01em] text-copper-400">
                 {profile.role}
               </p>
             </div>
 
-            <p className="rise mt-7 max-w-xl text-base leading-relaxed text-mist-300 [animation-delay:200ms]">
+            <p className="rise mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-mist-300 [animation-delay:200ms]">
               {profile.tagline}
             </p>
 
-            <ul className="rise mt-8 flex flex-wrap gap-x-7 gap-y-3 [animation-delay:260ms]">
+            <ul className="rise mt-7 flex flex-wrap gap-x-7 gap-y-3 [animation-delay:260ms]">
               {contactItems.map(({ icon: Icon, label, href }) => (
                 <li key={label}>
                   {href ? (
@@ -66,7 +66,7 @@ export function Hero() {
               ))}
             </ul>
 
-            <div className="rise mt-10 flex flex-wrap gap-3 [animation-delay:320ms]">
+            <div className="rise mt-8 flex flex-wrap gap-3 [animation-delay:320ms]">
               <OpenChatButton className={primaryButton}>
                 <MessageSquare className="size-4" />
                 Ask my assistant
@@ -104,29 +104,20 @@ export function Hero() {
         </div>
 
         {/* Key figures — the drawing's schedule table. */}
-        <dl className="mt-20 grid grid-cols-2 border-t border-[color:var(--rule)] sm:grid-cols-4">
+        <dl className="mt-12 grid grid-cols-2 border-t border-[color:var(--rule)] sm:grid-cols-4">
           {stats.map((stat, index) => (
             <div
               key={stat.label}
-              className="border-b border-[color:var(--rule)] px-1 py-6 sm:border-b-0 sm:px-0 sm:py-7"
+              className="border-b border-[color:var(--rule)] px-1 py-5 sm:border-b-0 sm:px-0 sm:py-6"
               style={{ borderLeft: index === 0 ? undefined : "1px solid var(--rule)" }}
             >
-              <dd className="pl-0 text-3xl font-semibold tracking-tight text-white sm:pl-6">
+              <dd className="pl-0 font-display text-[clamp(2rem,4vw,2.75rem)] font-bold leading-none tracking-[-0.03em] text-white sm:pl-6">
                 {stat.value}
               </dd>
-              <dt className="label mt-2 sm:pl-6">{stat.label}</dt>
+              <dt className="label mt-2.5 sm:pl-6">{stat.label}</dt>
             </div>
           ))}
         </dl>
-
-        <a
-          href="#about"
-          aria-label="Scroll to about"
-          className="mt-14 inline-flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-mist-500 transition-colors hover:text-copper-400"
-        >
-          <ArrowDown className="size-3.5" />
-          Continue
-        </a>
       </div>
     </section>
   );

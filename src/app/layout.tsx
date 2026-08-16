@@ -1,9 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 
 import { profile } from "@/lib/content";
 import "./globals.css";
 
+/** Headings and the nav. Geometric, slightly condensed — carries large sizes. */
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700"],
+});
+
+/** Body copy — kept separate from the display face for readability at 16px. */
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,7 +26,7 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://naeel.ai-technology.ae";
-const description = `${profile.role} in ${profile.location}. RCDD, PMP, CCNA, SIRA and ADMCC certified, with 15+ years across container terminals, aviation, oil and gas, and corporate ICT.`;
+const description = `${profile.role} in ${profile.location}. PMP, RCDD, RTPM, CSPP, PMP-CPMAI, CCNA and SIRA certified, with 18+ years across container terminals, aviation, oil and gas, and corporate ICT.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -35,6 +44,9 @@ export const metadata: Metadata = {
     "data centre",
     "RCDD",
     "PMP",
+    "RTPM",
+    "CSPP",
+    "CPMAI",
     "Abu Dhabi",
     "container terminals",
   ],
@@ -104,7 +116,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} blueprint`}>
+      <body
+        className={`${spaceGrotesk.variable} ${geistSans.variable} ${geistMono.variable} blueprint`}
+      >
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-copper-500 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink-900"

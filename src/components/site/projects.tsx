@@ -26,7 +26,7 @@ export function Projects() {
               <span className="font-mono text-xs text-mist-500">{project.year}</span>
             </div>
 
-            <h3 className="mt-5 text-lg font-medium leading-snug text-white">
+            <h3 className="mt-5 font-display text-xl font-semibold leading-snug tracking-[-0.015em] text-white">
               {project.title}
             </h3>
             <p className="mt-1 text-sm text-mist-500">{project.company}</p>

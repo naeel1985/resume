@@ -9,20 +9,20 @@ import { navigation, profile } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer id="contact" className="rule mt-8 scroll-mt-24">
-      <div className="mx-auto w-full max-w-6xl px-6 py-20 sm:py-24">
-        <div className="grid gap-14 lg:grid-cols-[1.3fr_1fr]">
+    <footer id="contact" className="rule scroll-mt-24">
+      <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
           <div>
             <p className="label text-copper-500">Get in touch</p>
-            <h2 className="mt-5 max-w-lg text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
+            <h2 className="mt-4 max-w-lg font-display text-[clamp(2rem,4.5vw,3rem)] font-bold leading-[1.05] tracking-[-0.03em] text-white">
               Have a project, a role, or a question about a system?
             </h2>
-            <p className="mt-5 max-w-md leading-relaxed text-mist-300">
+            <p className="mt-5 max-w-md text-[1.0625rem] leading-relaxed text-mist-300">
               Email or call directly, or ask the assistant — it answers from my
               actual project history and passes anything it cannot answer on to me.
             </p>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <OpenChatButton className={primaryButton}>
                 <MessageSquare className="size-4" />
                 Ask my assistant
@@ -108,7 +108,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="rule mt-16 flex flex-col gap-3 pt-7 sm:flex-row sm:items-center sm:justify-between">
+        <div className="rule mt-12 flex flex-col gap-3 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="label">
             © {new Date().getFullYear()} {profile.name}
           </p>

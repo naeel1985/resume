@@ -40,7 +40,7 @@ export function Experience() {
                 className="absolute left-[5.5rem] top-[2.35rem] hidden size-1.5 -translate-x-1/2 rotate-45 bg-copper-500 sm:block"
               />
 
-              <h3 className="text-lg font-medium leading-snug text-white">
+              <h3 className="font-display text-xl font-semibold leading-snug tracking-[-0.015em] text-white sm:text-[1.375rem]">
                 {role.title}
               </h3>
               <p className="mt-1 text-sm text-copper-400">{role.company}</p>

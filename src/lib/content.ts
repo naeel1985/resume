@@ -10,7 +10,7 @@ export const profile = {
   name: "Naeel Zuriek",
   role: "Infrastructure & ELV Specialist",
   tagline:
-    "Fifteen years designing, deploying and commissioning the low-voltage and ICT systems behind container terminals, airports, oil fields and corporate headquarters.",
+    "Eighteen years designing, deploying and commissioning the low-voltage and ICT systems behind container terminals, airports, oil fields and corporate headquarters.",
   location: "Abu Dhabi, UAE",
   email: "eng.naeel.zuriek@gmail.com",
   phone: "+971 52 284 4000",
@@ -21,13 +21,24 @@ export const profile = {
 } as const;
 
 export const stats = [
-  { value: "15+", label: "Years experience" },
+  { value: "18+", label: "Years experience" },
   { value: "100+", label: "Projects delivered" },
-  { value: "5", label: "Certifications" },
+  { value: "7", label: "Certifications" },
   { value: "4", label: "Sectors" },
 ] as const;
 
-export const certifications = [
+/**
+ * `year` and `body` are optional — the UI simply omits them when absent, so an
+ * unknown award date is never guessed at. Fill them in when you have them.
+ */
+export type Certification = {
+  name: string;
+  short: string;
+  body?: string;
+  year?: string;
+};
+
+export const certifications: Certification[] = [
   { name: "Project Management Professional", short: "PMP", body: "PMI", year: "2024" },
   {
     name: "Registered Communications Distribution Designer",
@@ -35,9 +46,23 @@ export const certifications = [
     body: "BICSI",
     year: "2023",
   },
+  // TODO(naeel): add the award year (and confirm the issuing body) for these three.
+  {
+    name: "Registered Telecommunications Project Manager",
+    short: "RTPM",
+    body: "BICSI",
+  },
+  {
+    name: "Certified Sustainable Project Professional",
+    short: "CSPP",
+  },
+  {
+    name: "Certified Professional in Managing AI",
+    short: "PMP-CPMAI",
+  },
   { name: "SIRA & ADMCC Security Engineer", short: "SIRA", body: "UAE Government", year: "2024" },
   { name: "Cisco Certified Network Associate", short: "CCNA", body: "Cisco", year: "2017" },
-] as const;
+];
 
 export type Experience = {
   title: string;
