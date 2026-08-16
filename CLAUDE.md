@@ -115,6 +115,24 @@ Three things in this repo exist only because of CloudLinux/cPanel, and each one 
 
 `.next/` and `node_modules/` are gitignored — both are produced on the server.
 
+## Dependencies and `npm audit`
+
+**Never run `npm audit fix --force` on this repo.** It resolves the remaining advisories by upgrading Next to 16, which switches the build to Turbopack — the exact thing that cannot work with cPanel's symlinked `node_modules`. On the server it also destroys the CloudLinux `node_modules` symlink and leaves the app unbuildable until the symlink is recreated.
+
+`next` and `eslint-config-next` are pinned to the same exact version on purpose; they must be bumped together.
+
+Three high-severity advisories are knowingly accepted, all of them fixable only by Next 16:
+
+| Advisory | Why it is accepted here |
+| --- | --- |
+| `postcss` (nested under `next`) | Exploits need attacker-controlled CSS or `sourceMappingURL`. All CSS is authored in this repo and compiled at build time. |
+| `sharp` (nested under `next`, libvips CVEs) | Exploits need a malicious *input image*. `next/image` only ever processes `public/me.jpg`; the site accepts no uploads. |
+| `next` itself | Flagged transitively for the two above. |
+
+Adding a top-level `sharp` does **not** fix its advisory — Next declares `sharp: ^0.34.3`, so npm keeps a nested copy at 0.34.x and uses that. It only creates a duplicate.
+
+`nodemailer` is different and was upgraded to 9.x: its advisories are CRLF/SMTP header injection, and this app mails content a visitor can influence. Our API surface is just `createTransport` + `sendMail`, so majors are cheap to take. `@types/nodemailer` must track the major (8.x for nodemailer 9) and lives in `dependencies`, not `devDependencies`, because the server build type-checks.
+
 ## Gotchas
 
 - **Never add `--turbopack`.** The build must be webpack for cPanel.

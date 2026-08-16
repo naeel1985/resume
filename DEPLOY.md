@@ -210,6 +210,41 @@ been run after the first clone (there is no `.next` to serve).
 The stale-npmrc problem `.npmrc` guards against. Confirm `.npmrc` made it into
 the clone.
 
+**"Cloudlinux NodeJS Selector demands to store node modules ... symlink called
+node_modules"** — and `next: command not found` when you build
+
+Something replaced the `node_modules` **symlink** with a real directory. The
+usual cause is `npm audit fix --force` (never run it here — see below), which
+tries to rebuild the tree in place and fails partway with
+`ENOTEMPTY: directory not empty, rmdir '.../node_modules'`.
+
+Recover:
+
+```bash
+cd ~/naeel.ai-technology.ae
+rm -rf node_modules            # the stray REAL directory in the app root
+git checkout -- package.json package-lock.json   # undo any rewritten versions
+```
+
+Then in cPanel → **Setup Node.js App** → your app → click **Run NPM Install**.
+That button is what recreates the virtualenv symlink; a plain `npm install`
+from the shell does not. Afterwards:
+
+```bash
+source /home/<user>/nodevenv/naeel.ai-technology.ae/<node-ver>/bin/activate
+cd ~/naeel.ai-technology.ae
+npm run build
+```
+
+`next: command not found` is just the symptom of `node_modules` being broken —
+it resolves itself once the symlink is back.
+
+**Never run `npm audit fix --force`**
+It "fixes" the remaining advisories by upgrading Next to 16, whose build
+defaults to Turbopack — which cannot follow cPanel's symlinked `node_modules`.
+It would break the deploy even if the install succeeded. Use plain
+`npm audit` to review, and upgrade individual packages deliberately.
+
 **Build killed / out of memory**
 Shared plans cap memory per process. Try again on a quieter moment, or ask the
 host to raise the limit. As a fallback you can build locally and copy the
