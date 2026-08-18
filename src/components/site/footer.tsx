@@ -112,7 +112,6 @@ export function Footer() {
           <p className="label">
             © {new Date().getFullYear()} {profile.name}
           </p>
-          <p className="label">Next.js · TypeScript · Claude Haiku 4.5</p>
         </div>
       </div>
     </footer>
